@@ -1,0 +1,17 @@
+Ali Faiz:
+
+We will learn:
+1- Service Architecture
+2- Design Architecture
+....
+
+When choosing a technology, you should consider why you are selecting that particular technology and why it is necessary for the current project. 
+This is the most crucial aspect of the course. Also "How to choose a tool to help you solve the problem."
+
+C# dominated the market in Iraq because the early programmers used it to build Windows Forms applications. 
+As a result, we have followed in their footsteps, using what our predecessors used.
+
+---
+
+Osama:
+"Don't jump from specialist to specialist. Stick with one and gain some knowledge about others." 

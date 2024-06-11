@@ -1,0 +1,6 @@
+Q5/
+1- solution is to check 
+str[0] == 'i'
+str[1] == 'f'
+
+This is better than Contains and IndexOf function sulotion
