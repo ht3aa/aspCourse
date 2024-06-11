@@ -4,7 +4,20 @@ class Program
 {
   public static void Main()
   {
+    // Exercise 1.1
+    // Log 128 = 7
+    // Exercise 1.2
+    // Log 256 = 8
+    // Exercise 1.3
+    // Binary search O(Log n) 
+    // Exercise 1.4
+    // Linear search O(n) 
+    // Exercise 1.5
+    // Linear search O(n) 
+    // Exercise 1.6
+    // Linear search O(n) 
 
+    // for testing the binary search algorithm
     string[] names = new string[]
      {
             "Aaron", "Abigail", "Adam", "Adrian", "Aiden", "Alex", "Alexa", "Alexander",
@@ -25,7 +38,6 @@ class Program
             "Kayla", "Keith", "Kelly", "Kenneth", "Kevin", "Kimberly", "Kyle", "Laura",
             "Lauren", "Lillian", "Lily", "Linda", "Logan", "Lori", "Lucas", "Luke"
      };
-
     Console.WriteLine(BinarySearch.Run(names, "Lily"));
   }
 }
