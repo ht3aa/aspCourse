@@ -1,4 +1,4 @@
-﻿namespace Algorithms;
+﻿namespace DAS;
 
 class Program
 {
@@ -38,6 +38,20 @@ class Program
             "Kayla", "Keith", "Kelly", "Kenneth", "Kevin", "Kimberly", "Kyle", "Laura",
             "Lauren", "Lillian", "Lily", "Linda", "Logan", "Lori", "Lucas", "Luke"
      };
-    Console.WriteLine(BinarySearch.Run(names, "Lily"));
+    // Console.WriteLine(BinarySearch.Run(names, "Lily"));
+
+
+
+
+
+
+    SinglyLinkedList singlyLinkedList = new SinglyLinkedList();
+
+    singlyLinkedList.InsertNodeAtTheEnd("Ali");
+    singlyLinkedList.InsertNodeAtTheEnd("Ahmed");
+    singlyLinkedList.InsertNodeAtTheEnd("Mohammed");
+    singlyLinkedList.InsertNodeAtIndex("Hasan", 2);
+
+
   }
 }

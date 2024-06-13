@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/hasanweb/hasanweb/programming/courses/aspReactByAliAndHassan/algorithms/algorithms.csproj",
+      "projectUniqueName": "/home/hasanweb/hasanweb/programming/courses/aspReactByAliAndHassan/DAS/algorithms.csproj",
       "projectName": "algorithms",
-      "projectPath": "/home/hasanweb/hasanweb/programming/courses/aspReactByAliAndHassan/algorithms/algorithms.csproj",
+      "projectPath": "/home/hasanweb/hasanweb/programming/courses/aspReactByAliAndHassan/DAS/algorithms.csproj",
       "packagesPath": "/home/hasanweb/.nuget/packages/",
-      "outputPath": "/home/hasanweb/hasanweb/programming/courses/aspReactByAliAndHassan/algorithms/obj/",
+      "outputPath": "/home/hasanweb/hasanweb/programming/courses/aspReactByAliAndHassan/DAS/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/hasanweb/.nuget/NuGet/NuGet.Config"

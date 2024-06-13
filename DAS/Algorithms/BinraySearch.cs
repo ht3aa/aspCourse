@@ -1,4 +1,4 @@
-namespace Algorithms;
+namespace DAS;
 
 public enum StrComparisionEnum
 {
