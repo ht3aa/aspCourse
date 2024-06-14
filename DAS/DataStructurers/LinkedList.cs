@@ -25,6 +25,37 @@ class SinglyLinkedList
     return true;
   }
 
+
+  public bool ReverseLinkedList()
+  {
+
+    SinglyLinkedListNode currentNode = HEAD;
+    SinglyLinkedListNode? prevNode = null;
+    SinglyLinkedListNode? futureNode = null;
+
+
+    if (currentNode.nextNode != null)
+    {
+      currentNode = currentNode.nextNode;
+    }
+
+    while (currentNode.nextNode != null)
+    {
+      futureNode = currentNode.nextNode;
+
+
+      currentNode.nextNode = prevNode;
+      prevNode = currentNode;
+      currentNode = futureNode;
+
+    }
+
+    currentNode.nextNode = prevNode;
+    HEAD.nextNode = currentNode;
+
+    return true;
+  }
+
   public bool RemoveFirstNode()
   {
 
@@ -187,10 +218,12 @@ class SinglyLinkedList
 
   public void PrintAllNodes()
   {
-    SinglyLinkedListNode currentNode = HEAD;
-    while (currentNode.nextNode != null)
+    SinglyLinkedListNode? currentNode = HEAD;
+    while (currentNode != null)
     {
       currentNode = currentNode.nextNode;
+
+      if (currentNode == null) break;
       Console.WriteLine(currentNode.data);
     }
   }

@@ -3,9 +3,7 @@
 class Program
 {
   public static void Main()
-  {
-    // Exercise 1.1
-    // Log 128 = 7
+  { // Exercise 1.1 Log 128 = 7
     // Exercise 1.2
     // Log 256 = 8
     // Exercise 1.3
@@ -50,8 +48,9 @@ class Program
     singlyLinkedList.InsertNodeAtTheEnd("Ali");
     singlyLinkedList.InsertNodeAtTheEnd("Ahmed");
     singlyLinkedList.InsertNodeAtTheEnd("Mohammed");
-    singlyLinkedList.InsertNodeAtIndex("Hasan", 2);
-
+    singlyLinkedList.PrintAllNodes();
+    singlyLinkedList.ReverseLinkedList();
+    singlyLinkedList.PrintAllNodes();
 
   }
 }
