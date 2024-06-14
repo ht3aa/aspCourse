@@ -43,14 +43,22 @@ class Program
 
 
 
-    SinglyLinkedList singlyLinkedList = new SinglyLinkedList();
+    // SinglyLinkedList singlyLinkedList = new SinglyLinkedList();
 
-    singlyLinkedList.InsertNodeAtTheEnd("Ali");
-    singlyLinkedList.InsertNodeAtTheEnd("Ahmed");
-    singlyLinkedList.InsertNodeAtTheEnd("Mohammed");
-    singlyLinkedList.PrintAllNodes();
-    singlyLinkedList.ReverseLinkedList();
-    singlyLinkedList.PrintAllNodes();
+    // singlyLinkedList.InsertNodeAtTheEnd("Ali");
+    // singlyLinkedList.InsertNodeAtTheEnd("Ahmed");
+    // singlyLinkedList.InsertNodeAtTheEnd("Mohammed");
+    // singlyLinkedList.PrintAllNodes();
+    // singlyLinkedList.ReverseLinkedList();
+    // singlyLinkedList.PrintAllNodes();
+
+    string[] unSortedNames = new string[]
+    {
+      "hasan", "jafar", "Ahmed"
+    };
+
+    SelectionSort.Run(unSortedNames);
+
 
   }
 }
