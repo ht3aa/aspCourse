@@ -1,26 +1,32 @@
 namespace DAS;
 
-class SinglyLinkedListNode
+class SinglyLinkedListNode<T>
 {
-  public string data = "";
-  public SinglyLinkedListNode? nextNode = null;
+  public T? data { get; set; }
+  public SinglyLinkedListNode<T>? nextNode { get; set; }
+
+  public SinglyLinkedListNode(T data = default(T))
+  {
+    this.data = data;
+    this.nextNode = null;
+  }
 }
 
-class SinglyLinkedList
+class SinglyLinkedList<T>
 {
-  public SinglyLinkedListNode HEAD = new SinglyLinkedListNode();
-  public SinglyLinkedListNode TAIL = new SinglyLinkedListNode();
+  public SinglyLinkedListNode<T> HEAD = new SinglyLinkedListNode<T>();
+  public SinglyLinkedListNode<T> TAIL = new SinglyLinkedListNode<T>();
+  public int nodesNumber = -1;
 
 
-  public bool InsertNodeAtTheStart(string data)
+  public bool InsertNodeAtTheStart(T data)
   {
-    SinglyLinkedListNode newNode = new SinglyLinkedListNode();
-    newNode.data = data;
+    SinglyLinkedListNode<T> newNode = new SinglyLinkedListNode<T>(data);
 
-    SinglyLinkedListNode currentNode = HEAD;
+    newNode.nextNode = HEAD;
+    HEAD = newNode;
 
-    newNode.nextNode = HEAD.nextNode;
-    HEAD.nextNode = newNode;
+    nodesNumber++;
 
     return true;
   }
@@ -29,58 +35,58 @@ class SinglyLinkedList
   public bool ReverseLinkedList()
   {
 
-    SinglyLinkedListNode currentNode = HEAD;
-    SinglyLinkedListNode? prevNode = null;
-    SinglyLinkedListNode? futureNode = null;
+    SinglyLinkedListNode<T> currentNode = HEAD;
+    SinglyLinkedListNode<T>? prevNode = null;
+    SinglyLinkedListNode<T>? currentNextNode = null;
 
-
-    if (currentNode.nextNode != null)
-    {
-      currentNode = currentNode.nextNode;
-    }
 
     while (currentNode.nextNode != null)
     {
-      futureNode = currentNode.nextNode;
-
-
+      currentNextNode = currentNode.nextNode;
       currentNode.nextNode = prevNode;
       prevNode = currentNode;
-      currentNode = futureNode;
-
+      currentNode = currentNextNode;
     }
 
     currentNode.nextNode = prevNode;
-    HEAD.nextNode = currentNode;
+    TAIL = HEAD;
+    HEAD = currentNode;
 
     return true;
   }
 
   public bool RemoveFirstNode()
   {
+    SinglyLinkedListNode<T> currentNode = HEAD;
 
-    SinglyLinkedListNode currentNode = HEAD;
+    HEAD = currentNode.nextNode;
 
-    HEAD.nextNode = currentNode.nextNode?.nextNode;
-
+    nodesNumber--;
     return true;
   }
 
   public bool RemoveLastNode()
   {
 
-    SinglyLinkedListNode currentNode = TAIL;
+    SinglyLinkedListNode<T> currentNode = HEAD;
 
-    TAIL.nextNode = currentNode.nextNode?.nextNode;
+    while (currentNode.nextNode?.nextNode != null)
+    {
+      currentNode = currentNode.nextNode;
+    }
 
+    TAIL = currentNode;
+    currentNode.nextNode = null;
+
+    nodesNumber--;
     return true;
   }
 
-  public string[] ConvertToArray()
+  public T[] ConvertToArray()
   {
-    string[] arr = new string[CountNodes()];
+    T[] arr = new T[nodesNumber];
 
-    SinglyLinkedListNode currentNode = HEAD;
+    SinglyLinkedListNode<T> currentNode = HEAD;
     int index = -1;
     while (currentNode.nextNode != null)
     {
@@ -95,7 +101,7 @@ class SinglyLinkedList
   {
     string str = "";
 
-    SinglyLinkedListNode currentNode = HEAD;
+    SinglyLinkedListNode<T> currentNode = HEAD;
 
     while (currentNode.nextNode != null)
     {
@@ -106,35 +112,49 @@ class SinglyLinkedList
     return str;
   }
 
-  public bool InsertNodeAtTheEnd(string data)
+  public bool InsertNodeAtTheEnd(T data)
   {
-    SinglyLinkedListNode newNode = new SinglyLinkedListNode();
+    SinglyLinkedListNode<T> newNode = new SinglyLinkedListNode<T>();
     newNode.data = data;
 
-    SinglyLinkedListNode currentNode = HEAD;
+    SinglyLinkedListNode<T> currentNode = HEAD;
     while (currentNode.nextNode != null)
     {
       currentNode = currentNode.nextNode;
     }
 
-    currentNode.nextNode = newNode;
-    TAIL.nextNode = newNode;
+    if (nodesNumber == 0)
+    {
+      HEAD = newNode;
+      TAIL = newNode;
+    }
+    else
+    {
+      currentNode.nextNode = newNode;
+      TAIL = newNode;
+    }
 
+    nodesNumber++;
     return true;
   }
 
-  public bool InsertNodeAtIndex(string data, int wantedIndex)
+  public bool InsertNodeAtIndex(T data, int wantedIndex)
   {
-    if (CountNodes() - 1 == wantedIndex)
+    if (wantedIndex >= nodesNumber)
     {
       return InsertNodeAtTheEnd(data);
     }
+    else if (wantedIndex == 0) 
+    {
+      return InsertNodeAtTheStart(data);
+    }
 
-    SinglyLinkedListNode newNode = new SinglyLinkedListNode();
+    SinglyLinkedListNode<T> newNode = new SinglyLinkedListNode<T>();
     newNode.data = data;
+
     int currentIndex = -1;
 
-    SinglyLinkedListNode currentNode = HEAD;
+    SinglyLinkedListNode<T> currentNode = HEAD;
     while (currentNode.nextNode != null)
     {
       if (currentIndex == wantedIndex - 1) break;
@@ -146,15 +166,25 @@ class SinglyLinkedList
     newNode.nextNode = currentNode.nextNode;
     currentNode.nextNode = newNode;
 
+    nodesNumber++;
     return true;
   }
 
 
   public bool RemoveNodeAtIndex(int wantedIndex)
   {
+    if (wantedIndex >= nodesNumber)
+    {
+      return RemoveLastNode();
+    }
+    else if (wantedIndex == 0) 
+    {
+      return RemoveFirstNode();
+    }
+
     int currentIndex = -1;
 
-    SinglyLinkedListNode currentNode = HEAD;
+    SinglyLinkedListNode<T> currentNode = HEAD;
     while (currentNode.nextNode != null)
     {
       if (currentIndex == wantedIndex - 1) break;
@@ -165,16 +195,17 @@ class SinglyLinkedList
 
 
     currentNode.nextNode = currentNode.nextNode?.nextNode;
+    nodesNumber--;
 
     return true;
   }
 
-  public SinglyLinkedListNode GetNode(int wantedIndex)
+  public SinglyLinkedListNode<T> GetNode(int wantedIndex)
   {
 
     int currentIndex = -1;
 
-    SinglyLinkedListNode currentNode = HEAD;
+    SinglyLinkedListNode<T> currentNode = HEAD;
     while (currentNode.nextNode != null)
     {
       if (currentIndex == wantedIndex) break;
@@ -187,15 +218,15 @@ class SinglyLinkedList
     return currentNode;
   }
 
-  public int GetFirstNodeIndexIfExist(string wantedNodeData)
+  public int GetFirstNodeIndexIfExist(T wantedNodeData)
   {
 
     int currentIndex = -1;
 
-    SinglyLinkedListNode currentNode = HEAD;
+    SinglyLinkedListNode<T> currentNode = HEAD;
     while (currentNode.nextNode != null)
     {
-      if (currentNode.data == wantedNodeData) return currentIndex;
+      if (currentNode.data.Equals(wantedNodeData)) return currentIndex;
 
       currentNode = currentNode.nextNode;
       currentIndex++;
@@ -206,40 +237,31 @@ class SinglyLinkedList
 
   public bool IsEmpty()
   {
-    return HEAD.nextNode == null;
+    return HEAD.nextNode == null || nodesNumber == -1;
   }
 
   public string Drop()
   {
     HEAD.nextNode = null;
+    HEAD.data = default;
+    nodesNumber++;
 
     return "Linked list is empty now";
   }
 
   public void PrintAllNodes()
   {
-    SinglyLinkedListNode? currentNode = HEAD;
+    SinglyLinkedListNode<T>? currentNode = HEAD;
     while (currentNode != null)
     {
-      currentNode = currentNode.nextNode;
-
-      if (currentNode == null) break;
       Console.WriteLine(currentNode.data);
+      currentNode = currentNode.nextNode;
     }
   }
 
   public int CountNodes()
   {
-    SinglyLinkedListNode currentNode = HEAD;
-    int count = 0;
-
-    while (currentNode.nextNode != null)
-    {
-      currentNode = currentNode.nextNode;
-      count++;
-    }
-
-    return count;
+    return nodesNumber;
   }
 }
 
