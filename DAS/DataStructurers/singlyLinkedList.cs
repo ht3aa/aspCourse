@@ -5,7 +5,7 @@ class SinglyLinkedListNode<T>
   public T? data { get; set; }
   public SinglyLinkedListNode<T>? nextNode { get; set; }
 
-  public SinglyLinkedListNode(T data = default(T))
+  public SinglyLinkedListNode(T data = default(T)!)
   {
     this.data = data;
     this.nextNode = null;
@@ -59,6 +59,8 @@ class SinglyLinkedList<T>
   {
     SinglyLinkedListNode<T> currentNode = HEAD;
 
+    if (currentNode.nextNode == null) throw new Exception("in SinglyLinkedList.RemoveFirstNode method the currentNode.nextNode is null");
+
     HEAD = currentNode.nextNode;
 
     nodesNumber--;
@@ -91,6 +93,8 @@ class SinglyLinkedList<T>
     while (currentNode.nextNode != null)
     {
       currentNode = currentNode.nextNode;
+
+      if (currentNode.data == null) throw new Exception("in SinglyLinkedList.ConvertToArray method the currentNode.data is null");
       arr[index] = currentNode.data;
     }
 
@@ -144,7 +148,7 @@ class SinglyLinkedList<T>
     {
       return InsertNodeAtTheEnd(data);
     }
-    else if (wantedIndex == 0) 
+    else if (wantedIndex == 0)
     {
       return InsertNodeAtTheStart(data);
     }
@@ -154,17 +158,18 @@ class SinglyLinkedList<T>
 
     int currentIndex = -1;
 
-    SinglyLinkedListNode<T> currentNode = HEAD;
-    while (currentNode.nextNode != null)
+    // nodeBeforeWantedIndex is the node before the wanted index node
+    SinglyLinkedListNode<T> nodeBeforeWantedIndex = HEAD;
+    while (nodeBeforeWantedIndex.nextNode != null)
     {
       if (currentIndex == wantedIndex - 1) break;
 
-      currentNode = currentNode.nextNode;
+      nodeBeforeWantedIndex = nodeBeforeWantedIndex.nextNode;
       currentIndex++;
     }
 
-    newNode.nextNode = currentNode.nextNode;
-    currentNode.nextNode = newNode;
+    newNode.nextNode = nodeBeforeWantedIndex.nextNode;
+    nodeBeforeWantedIndex.nextNode = newNode;
 
     nodesNumber++;
     return true;
@@ -177,24 +182,25 @@ class SinglyLinkedList<T>
     {
       return RemoveLastNode();
     }
-    else if (wantedIndex == 0) 
+    else if (wantedIndex == 0)
     {
       return RemoveFirstNode();
     }
 
     int currentIndex = -1;
 
-    SinglyLinkedListNode<T> currentNode = HEAD;
-    while (currentNode.nextNode != null)
+    // nodeBeforeWantedIndex is the node before the wanted index node
+    SinglyLinkedListNode<T> nodeBeforeWantedIndex = HEAD;
+    while (nodeBeforeWantedIndex.nextNode != null)
     {
       if (currentIndex == wantedIndex - 1) break;
 
-      currentNode = currentNode.nextNode;
+      nodeBeforeWantedIndex = nodeBeforeWantedIndex.nextNode;
       currentIndex++;
     }
 
 
-    currentNode.nextNode = currentNode.nextNode?.nextNode;
+    nodeBeforeWantedIndex.nextNode = nodeBeforeWantedIndex.nextNode?.nextNode;
     nodesNumber--;
 
     return true;
@@ -226,6 +232,8 @@ class SinglyLinkedList<T>
     SinglyLinkedListNode<T> currentNode = HEAD;
     while (currentNode.nextNode != null)
     {
+      if (currentNode.data == null) throw new Exception("in SinglyLinkedList.GetFirstNodeIndexIfExist method the currentNode.data is null");
+
       if (currentNode.data.Equals(wantedNodeData)) return currentIndex;
 
       currentNode = currentNode.nextNode;

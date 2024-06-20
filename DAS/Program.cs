@@ -43,15 +43,14 @@ class Program
 
 
 
-    SinglyLinkedList<string> singlyLinkedList = new SinglyLinkedList<string>();
+    DoublyLinkedList<string> doublyLinkedList = new DoublyLinkedList<string>();
 
-    singlyLinkedList.InsertNodeAtTheEnd("Ali");
-    singlyLinkedList.InsertNodeAtTheEnd("hassan");
-    singlyLinkedList.InsertNodeAtTheEnd("jakm");
-    singlyLinkedList.InsertNodeAtTheStart("mohammed");
+    doublyLinkedList.InsertNodeAtTheEnd("Ali");
+    doublyLinkedList.InsertNodeAtTheEnd("hassan");
+    doublyLinkedList.InsertNodeAtTheEnd("jakm");
+    doublyLinkedList.InsertNodeAtTheStart("mohammed");
 
-    Console.WriteLine(singlyLinkedList.IsEmpty());
-    singlyLinkedList.PrintAllNodes();
+    doublyLinkedList.PrintAllNodes();
 
 
     // SelectionSort.Run(unSortedNames);
