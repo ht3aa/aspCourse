@@ -3,58 +3,42 @@
 class Program
 {
   public static void Main()
-  { // Exercise 1.1 Log 128 = 7
-    // Exercise 1.2
-    // Log 256 = 8
-    // Exercise 1.3
-    // Binary search O(Log n) 
-    // Exercise 1.4
-    // Linear search O(n) 
-    // Exercise 1.5
-    // Linear search O(n) 
-    // Exercise 1.6
-    // Linear search O(n) 
+  {
+    CommitHistory commitHistory = new CommitHistory();
+    string filePath = "./currentProject/test.cs";
 
-    // for testing the binary search algorithm
-    string[] names = new string[]
-     {
-            "Aaron", "Abigail", "Adam", "Adrian", "Aiden", "Alex", "Alexa", "Alexander",
-            "Alexis", "Alice", "Alicia", "Alison", "Amanda", "Amber", "Amy", "Andrea",
-            "Andrew", "Angela", "Anna", "Anthony", "Ashley", "Austin", "Ava", "Barbara",
-            "Benjamin", "Betty", "Blake", "Brandon", "Brenda", "Brian", "Brittany", "Brooke",
-            "Bryan", "Caleb", "Cameron", "Carl", "Carla", "Carol", "Caroline", "Carter",
-            "Catherine", "Charles", "Charlotte", "Chloe", "Chris", "Christian", "Christina",
-            "Christopher", "Cindy", "Claire", "Clara", "Connor", "Crystal", "Cynthia",
-            "Daniel", "David", "Dawn", "Deborah", "Dennis", "Diana", "Diane", "Donna",
-            "Doris", "Dorothy", "Douglas", "Dylan", "Edward", "Eleanor", "Elizabeth",
-            "Emily", "Emma", "Eric", "Ethan", "Eugene", "Evan", "Evelyn", "Faith",
-            "Florence", "Frances", "Frank", "Gabriel", "Gavin", "George", "Gloria",
-            "Grace", "Gregory", "Hannah", "Harold", "Heather", "Helen", "Henry", "Isaac",
-            "Isabella", "Jack", "Jacob", "James", "Jamie", "Jane", "Janet", "Janice",
-            "Jason", "Jean", "Jeffrey", "Jennifer", "Jessica", "John", "Jonathan", "Joseph",
-            "Joshua", "Judith", "Judy", "Julia", "Julie", "Justin", "Katherine", "Kathleen",
-            "Kayla", "Keith", "Kelly", "Kenneth", "Kevin", "Kimberly", "Kyle", "Laura",
-            "Lauren", "Lillian", "Lily", "Linda", "Logan", "Lori", "Lucas", "Luke"
-     };
-    // Console.WriteLine(BinarySearch.Run(names, "Lily"));
+
+    // insert text into file
+    string createText = "// first commit" + Environment.NewLine;
+    File.WriteAllText(filePath, createText);
+
+    // commit
+    commitHistory.commit("first commit");
+
+    string readText = File.ReadAllText(filePath);
+    Console.WriteLine($"text in the file :  {readText}");
 
 
 
 
 
-
-    DoublyLinkedList<string> doublyLinkedList = new DoublyLinkedList<string>();
-
-    doublyLinkedList.InsertNodeAtTheEnd("Ali");
-    doublyLinkedList.InsertNodeAtTheEnd("hassan");
-    doublyLinkedList.InsertNodeAtTheEnd("jakm");
-    doublyLinkedList.InsertNodeAtTheStart("mohammed");
-
-    doublyLinkedList.PrintAllNodes();
+    // insert text into file
+    string createText2 = "// second commit" + Environment.NewLine;
+    File.WriteAllText(filePath, createText2);
 
 
-    // SelectionSort.Run(unSortedNames);
+
+    // commit
+    commitHistory.commit("first commit");
+
+    string readText2 = File.ReadAllText(filePath);
+    Console.WriteLine($"text in the file :  {readText2}");
 
 
+    string firstCommitId = commitHistory.getCommitId(0);
+    commitHistory.checkout(firstCommitId);
+
+    string readText3 = File.ReadAllText(filePath);
+    Console.WriteLine($"text in the file :  {readText3}");
   }
 }
