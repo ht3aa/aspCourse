@@ -10,9 +10,9 @@ public enum StrComparisionEnum
 public class HelpFullMethods
 {
 
-  public static void Swap(ref string str1, ref string str2)
+  public static void Swap<T>(ref T str1, ref T str2)
   {
-    string temp = str1;
+    T temp = str1;
     str1 = str2;
     str2 = temp;
   }
