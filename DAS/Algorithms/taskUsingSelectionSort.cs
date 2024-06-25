@@ -9,20 +9,22 @@ class Package
 
 class SelectionSortTask : HelpFullMethods
 {
+
+  // implementation of selection sort algorithm
   public void Run(Package[] packages)
   {
 
     Package minPackage = new Package();
-    int highIndex = packages.Length - 1;
-    int lowIndex = 0;
-    int minPackageIndex = lowIndex;
+    int rightIndex = packages.Length - 1;
+    int leftIndex = 0;
+    int minPackageIndex = leftIndex;
 
-    while (lowIndex <= highIndex)
+    while (leftIndex <= rightIndex)
     {
-      minPackage = packages[lowIndex];
-      minPackageIndex = lowIndex;
+      minPackage = packages[leftIndex];
+      minPackageIndex = leftIndex;
 
-      for (int i = lowIndex + 1; i <= highIndex; i++)
+      for (int i = leftIndex + 1; i <= rightIndex; i++)
       {
         if (minPackage.weight > packages[i].weight)
         {
@@ -31,10 +33,10 @@ class SelectionSortTask : HelpFullMethods
         }
       }
 
-      if (minPackageIndex != lowIndex)
-        Swap<Package>(ref packages[lowIndex], ref packages[minPackageIndex]);
+      if (minPackageIndex != leftIndex)
+        Swap<Package>(ref packages[leftIndex], ref packages[minPackageIndex]);
 
-      lowIndex++;
+      leftIndex++;
     }
 
 
@@ -43,7 +45,7 @@ class SelectionSortTask : HelpFullMethods
     int sortedPackagesIndex = 0;
 
     // add all is not fragile first
-    for (int i = 0; i <= highIndex; i++)
+    for (int i = 0; i <= rightIndex; i++)
     {
       if (!packages[i].isFragile)
       {
@@ -54,7 +56,7 @@ class SelectionSortTask : HelpFullMethods
     }
 
     // add all is fragile second
-    for (int i = 0; i <= highIndex; i++)
+    for (int i = 0; i <= rightIndex; i++)
     {
       if (packages[i].isFragile)
       {
@@ -64,6 +66,7 @@ class SelectionSortTask : HelpFullMethods
       }
     }
 
+    // just printing the sorted packages
     for (int i = 0; i < sortedPackages.Length; i++)
     {
       Console.WriteLine($"package {i} : weight: {sortedPackages[i].weight} , isFragile: {sortedPackages[i].isFragile}");
