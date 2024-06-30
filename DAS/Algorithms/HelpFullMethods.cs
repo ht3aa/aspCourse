@@ -34,4 +34,5 @@ public class HelpFullMethods
 
     return StrComparisionEnum.Str1EqualThanStr2;
   }
+
 }

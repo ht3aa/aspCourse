@@ -4,27 +4,49 @@ class Program
 {
   public static void Main()
   {
-    Package package1 = new Package();
-    package1.weight = 5;
-    package1.isFragile = false;
-    Package package2 = new Package();
-    package2.weight = 2;
-    package2.isFragile = true;
-    Package package3 = new Package();
-    package3.weight = 3;
-    package3.isFragile = false;
-    Package package4 = new Package();
-    package4.weight = 10;
-    package4.isFragile = false;
-    Package package5 = new Package();
-    package5.weight = 1;
-    package5.isFragile = true;
 
-    Package[] packages = new Package[] { package1, package2, package3, package4, package5 };
+    Stack<int> stack = new Stack<int>();
 
-    SelectionSortTask selectionSortTask = new SelectionSortTask();
+    stack.Push(2);
+    stack.Push(5);
+    stack.Push(15);
+    stack.Push(3);
+    stack.Push(3);
+    stack.Push(1);
+    stack.Sort(false);
+    stack.PrintNodesValue();
 
-    selectionSortTask.Run(packages);
+    stack.Sort();
+    stack.PrintNodesValue();
+    // stack.Print();
+
+
+
+    // int[] ids = {1,2,3,4,5,6,7,8,9,10};
+
+    // Recursion.shipAndUnship(ids, 0);
+
+    // Package package1 = new Package();
+    // package1.weight = 5;
+    // package1.isFragile = false;
+    // Package package2 = new Package();
+    // package2.weight = 2;
+    // package2.isFragile = true;
+    // Package package3 = new Package();
+    // package3.weight = 3;
+    // package3.isFragile = false;
+    // Package package4 = new Package();
+    // package4.weight = 10;
+    // package4.isFragile = false;
+    // Package package5 = new Package();
+    // package5.weight = 1;
+    // package5.isFragile = true;
+
+    // Package[] packages = new Package[] { package1, package2, package3, package4, package5 };
+
+    // SelectionSortTask selectionSortTask = new SelectionSortTask();
+
+    // selectionSortTask.Run(packages);
 
 
     // CommitHistory commitHistory = new CommitHistory();

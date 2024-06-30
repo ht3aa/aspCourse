@@ -1,32 +1,25 @@
 namespace DAS;
 
-class DoublyLinkedListNode<T>
+class DoublyNode<T>
 {
-  public T? data { get; set; }
-  public DoublyLinkedListNode<T>? nextNode { get; set; }
-  public DoublyLinkedListNode<T>? prevNode { get; set; }
-
-  public DoublyLinkedListNode(T data = default(T)!)
-  {
-    this.data = data;
-    this.nextNode = null;
-    this.prevNode = null;
-  }
+  public T? data;
+  public DoublyNode<T>? nextNode;
+  public DoublyNode<T>? prevNode;
 }
 
 
 class DoublyLinkedList<T>
 {
 
-  public DoublyLinkedListNode<T> HEAD = new DoublyLinkedListNode<T>();
-  public DoublyLinkedListNode<T> TAIL = new DoublyLinkedListNode<T>();
+  public DoublyNode<T> HEAD = new DoublyNode<T>();
+  public DoublyNode<T> TAIL = new DoublyNode<T>();
   public int nodesNumber = -1;
 
 
 
   public bool InsertNodeAtTheStart(T data)
   {
-    DoublyLinkedListNode<T> newNode = new DoublyLinkedListNode<T>(data);
+    DoublyNode<T> newNode = new DoublyNode<T>();
 
     newNode.nextNode = HEAD;
     HEAD.prevNode = newNode;
@@ -40,7 +33,7 @@ class DoublyLinkedList<T>
 
   public bool RemoveFirstNode()
   {
-    DoublyLinkedListNode<T> currentNode = HEAD;
+    DoublyNode<T> currentNode = HEAD;
 
     if (currentNode.nextNode == null) throw new Exception("in DoublyLinkedList.RemoveFirstNode method the currentNode.nextNode is null");
     HEAD = currentNode.nextNode;
@@ -52,7 +45,7 @@ class DoublyLinkedList<T>
   public bool RemoveLastNode()
   {
 
-    DoublyLinkedListNode<T> currentNode = HEAD;
+    DoublyNode<T> currentNode = HEAD;
 
     while (currentNode.nextNode?.nextNode != null)
     {
@@ -70,7 +63,7 @@ class DoublyLinkedList<T>
   {
     T[] arr = new T[nodesNumber];
 
-    DoublyLinkedListNode<T> currentNode = HEAD;
+    DoublyNode<T> currentNode = HEAD;
     int index = -1;
     while (currentNode.nextNode != null)
     {
@@ -86,7 +79,7 @@ class DoublyLinkedList<T>
   {
     string str = "";
 
-    DoublyLinkedListNode<T> currentNode = HEAD;
+    DoublyNode<T> currentNode = HEAD;
 
     while (currentNode.nextNode != null)
     {
@@ -99,10 +92,10 @@ class DoublyLinkedList<T>
 
   public bool InsertNodeAtTheEnd(T data)
   {
-    DoublyLinkedListNode<T> newNode = new DoublyLinkedListNode<T>();
+    DoublyNode<T> newNode = new DoublyNode<T>();
     newNode.data = data;
 
-    DoublyLinkedListNode<T> currentNode = HEAD;
+    DoublyNode<T> currentNode = HEAD;
     while (currentNode.nextNode != null)
     {
       currentNode = currentNode.nextNode;
@@ -134,12 +127,12 @@ class DoublyLinkedList<T>
     {
       return InsertNodeAtTheStart(data);
     }
-    DoublyLinkedListNode<T> newNode = new DoublyLinkedListNode<T>();
+    DoublyNode<T> newNode = new DoublyNode<T>();
     newNode.data = data;
     int currentIndex = -1;
 
     // nodeBeforeWantedIndex is the node before the wanted index node
-    DoublyLinkedListNode<T> nodeBeforeWantedIndex = HEAD;
+    DoublyNode<T> nodeBeforeWantedIndex = HEAD;
     while (nodeBeforeWantedIndex.nextNode != null)
     {
       if (currentIndex == wantedIndex - 1) break;
@@ -173,7 +166,7 @@ class DoublyLinkedList<T>
     int currentIndex = -1;
 
     // nodeBeforeWantedIndex is the node before the wanted index node
-    DoublyLinkedListNode<T> nodeBeforeWantedIndex = HEAD;
+    DoublyNode<T> nodeBeforeWantedIndex = HEAD;
     while (nodeBeforeWantedIndex.nextNode != null)
     {
       if (currentIndex == wantedIndex - 1) break;
@@ -191,12 +184,12 @@ class DoublyLinkedList<T>
     return true;
   }
 
-  public DoublyLinkedListNode<T> GetNode(int wantedIndex)
+  public DoublyNode<T> GetNode(int wantedIndex)
   {
 
     int currentIndex = -1;
 
-    DoublyLinkedListNode<T> currentNode = HEAD;
+    DoublyNode<T> currentNode = HEAD;
     while (currentNode.nextNode != null)
     {
       if (currentIndex == wantedIndex) break;
@@ -214,7 +207,7 @@ class DoublyLinkedList<T>
 
     int currentIndex = -1;
 
-    DoublyLinkedListNode<T> currentNode = HEAD;
+    DoublyNode<T> currentNode = HEAD;
     while (currentNode.nextNode != null)
     {
       if (currentNode.data == null) throw new Exception("in DoublyLinkedList.GetFirstNodeIndexIfExist method the currentNode.data is null");
@@ -243,7 +236,7 @@ class DoublyLinkedList<T>
 
   public void PrintAllNodes()
   {
-    DoublyLinkedListNode<T>? currentNode = HEAD;
+    DoublyNode<T>? currentNode = HEAD;
     while (currentNode.nextNode != null)
     {
       Console.WriteLine(currentNode.data);

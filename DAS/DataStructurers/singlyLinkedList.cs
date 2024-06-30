@@ -1,27 +1,22 @@
 namespace DAS;
 
-class SinglyLinkedListNode<T>
+class SinglyNode<T>
 {
-  public T? data { get; set; }
-  public SinglyLinkedListNode<T>? nextNode { get; set; }
+  public T? data;
+  public SinglyNode<T>? nextNode;
 
-  public SinglyLinkedListNode(T data = default(T)!)
-  {
-    this.data = data;
-    this.nextNode = null;
-  }
 }
 
 class SinglyLinkedList<T>
 {
-  public SinglyLinkedListNode<T> HEAD = new SinglyLinkedListNode<T>();
-  public SinglyLinkedListNode<T> TAIL = new SinglyLinkedListNode<T>();
+  public SinglyNode<T> HEAD = new SinglyNode<T>();
+  public SinglyNode<T> TAIL = new SinglyNode<T>();
   public int nodesNumber = -1;
 
 
   public bool InsertNodeAtTheStart(T data)
   {
-    SinglyLinkedListNode<T> newNode = new SinglyLinkedListNode<T>(data);
+    SinglyNode<T> newNode = new SinglyNode<T>();
 
     newNode.nextNode = HEAD;
     HEAD = newNode;
@@ -35,9 +30,9 @@ class SinglyLinkedList<T>
   public bool ReverseLinkedList()
   {
 
-    SinglyLinkedListNode<T> currentNode = HEAD;
-    SinglyLinkedListNode<T>? prevNode = null;
-    SinglyLinkedListNode<T>? currentNextNode = null;
+    SinglyNode<T> currentNode = HEAD;
+    SinglyNode<T>? prevNode = null;
+    SinglyNode<T>? currentNextNode = null;
 
 
     while (currentNode.nextNode != null)
@@ -57,7 +52,7 @@ class SinglyLinkedList<T>
 
   public bool RemoveFirstNode()
   {
-    SinglyLinkedListNode<T> currentNode = HEAD;
+    SinglyNode<T> currentNode = HEAD;
 
     if (currentNode.nextNode == null) throw new Exception("in SinglyLinkedList.RemoveFirstNode method the currentNode.nextNode is null");
 
@@ -70,7 +65,7 @@ class SinglyLinkedList<T>
   public bool RemoveLastNode()
   {
 
-    SinglyLinkedListNode<T> currentNode = HEAD;
+    SinglyNode<T> currentNode = HEAD;
 
     while (currentNode.nextNode?.nextNode != null)
     {
@@ -88,7 +83,7 @@ class SinglyLinkedList<T>
   {
     T[] arr = new T[nodesNumber];
 
-    SinglyLinkedListNode<T> currentNode = HEAD;
+    SinglyNode<T> currentNode = HEAD;
     int index = -1;
     while (currentNode.nextNode != null)
     {
@@ -105,7 +100,7 @@ class SinglyLinkedList<T>
   {
     string str = "";
 
-    SinglyLinkedListNode<T> currentNode = HEAD;
+    SinglyNode<T> currentNode = HEAD;
 
     while (currentNode.nextNode != null)
     {
@@ -118,10 +113,10 @@ class SinglyLinkedList<T>
 
   public bool InsertNodeAtTheEnd(T data)
   {
-    SinglyLinkedListNode<T> newNode = new SinglyLinkedListNode<T>();
+    SinglyNode<T> newNode = new SinglyNode<T>();
     newNode.data = data;
 
-    SinglyLinkedListNode<T> currentNode = HEAD;
+    SinglyNode<T> currentNode = HEAD;
     while (currentNode.nextNode != null)
     {
       currentNode = currentNode.nextNode;
@@ -153,13 +148,13 @@ class SinglyLinkedList<T>
       return InsertNodeAtTheStart(data);
     }
 
-    SinglyLinkedListNode<T> newNode = new SinglyLinkedListNode<T>();
+    SinglyNode<T> newNode = new SinglyNode<T>();
     newNode.data = data;
 
     int currentIndex = -1;
 
     // nodeBeforeWantedIndex is the node before the wanted index node
-    SinglyLinkedListNode<T> nodeBeforeWantedIndex = HEAD;
+    SinglyNode<T> nodeBeforeWantedIndex = HEAD;
     while (nodeBeforeWantedIndex.nextNode != null)
     {
       if (currentIndex == wantedIndex - 1) break;
@@ -190,7 +185,7 @@ class SinglyLinkedList<T>
     int currentIndex = -1;
 
     // nodeBeforeWantedIndex is the node before the wanted index node
-    SinglyLinkedListNode<T> nodeBeforeWantedIndex = HEAD;
+    SinglyNode<T> nodeBeforeWantedIndex = HEAD;
     while (nodeBeforeWantedIndex.nextNode != null)
     {
       if (currentIndex == wantedIndex - 1) break;
@@ -206,12 +201,12 @@ class SinglyLinkedList<T>
     return true;
   }
 
-  public SinglyLinkedListNode<T> GetNode(int wantedIndex)
+  public SinglyNode<T> GetNode(int wantedIndex)
   {
 
     int currentIndex = -1;
 
-    SinglyLinkedListNode<T> currentNode = HEAD;
+    SinglyNode<T> currentNode = HEAD;
     while (currentNode.nextNode != null)
     {
       if (currentIndex == wantedIndex) break;
@@ -229,7 +224,7 @@ class SinglyLinkedList<T>
 
     int currentIndex = -1;
 
-    SinglyLinkedListNode<T> currentNode = HEAD;
+    SinglyNode<T> currentNode = HEAD;
     while (currentNode.nextNode != null)
     {
       if (currentNode.data == null) throw new Exception("in SinglyLinkedList.GetFirstNodeIndexIfExist method the currentNode.data is null");
@@ -259,7 +254,7 @@ class SinglyLinkedList<T>
 
   public void PrintAllNodes()
   {
-    SinglyLinkedListNode<T>? currentNode = HEAD;
+    SinglyNode<T>? currentNode = HEAD;
     while (currentNode != null)
     {
       Console.WriteLine(currentNode.data);
