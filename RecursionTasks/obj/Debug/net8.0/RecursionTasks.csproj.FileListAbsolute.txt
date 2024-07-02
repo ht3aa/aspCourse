@@ -1,0 +1,15 @@
+/home/hasanweb/hasanweb/programming/courses/aspReactByAliAndHassan/RecursionTasks/bin/Debug/net8.0/RecursionTasks
+/home/hasanweb/hasanweb/programming/courses/aspReactByAliAndHassan/RecursionTasks/bin/Debug/net8.0/RecursionTasks.deps.json
+/home/hasanweb/hasanweb/programming/courses/aspReactByAliAndHassan/RecursionTasks/bin/Debug/net8.0/RecursionTasks.runtimeconfig.json
+/home/hasanweb/hasanweb/programming/courses/aspReactByAliAndHassan/RecursionTasks/bin/Debug/net8.0/RecursionTasks.dll
+/home/hasanweb/hasanweb/programming/courses/aspReactByAliAndHassan/RecursionTasks/bin/Debug/net8.0/RecursionTasks.pdb
+/home/hasanweb/hasanweb/programming/courses/aspReactByAliAndHassan/RecursionTasks/obj/Debug/net8.0/RecursionTasks.GeneratedMSBuildEditorConfig.editorconfig
+/home/hasanweb/hasanweb/programming/courses/aspReactByAliAndHassan/RecursionTasks/obj/Debug/net8.0/RecursionTasks.AssemblyInfoInputs.cache
+/home/hasanweb/hasanweb/programming/courses/aspReactByAliAndHassan/RecursionTasks/obj/Debug/net8.0/RecursionTasks.AssemblyInfo.cs
+/home/hasanweb/hasanweb/programming/courses/aspReactByAliAndHassan/RecursionTasks/obj/Debug/net8.0/RecursionTasks.csproj.CoreCompileInputs.cache
+/home/hasanweb/hasanweb/programming/courses/aspReactByAliAndHassan/RecursionTasks/obj/Debug/net8.0/RecursionTasks.sourcelink.json
+/home/hasanweb/hasanweb/programming/courses/aspReactByAliAndHassan/RecursionTasks/obj/Debug/net8.0/RecursionTasks.dll
+/home/hasanweb/hasanweb/programming/courses/aspReactByAliAndHassan/RecursionTasks/obj/Debug/net8.0/refint/RecursionTasks.dll
+/home/hasanweb/hasanweb/programming/courses/aspReactByAliAndHassan/RecursionTasks/obj/Debug/net8.0/RecursionTasks.pdb
+/home/hasanweb/hasanweb/programming/courses/aspReactByAliAndHassan/RecursionTasks/obj/Debug/net8.0/RecursionTasks.genruntimeconfig.cache
+/home/hasanweb/hasanweb/programming/courses/aspReactByAliAndHassan/RecursionTasks/obj/Debug/net8.0/ref/RecursionTasks.dll
