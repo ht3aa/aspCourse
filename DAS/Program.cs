@@ -5,19 +5,34 @@ class Program
   public static void Main()
   {
 
-    Stack<int> stack = new Stack<int>();
+    List<Tuple<int, string>> tupleList = new List<Tuple<int, string>>();
+    
+    tupleList.Add(new Tuple<int, string>(3, "apple"));
+    tupleList.Add(new Tuple<int, string>(1, "banana"));
+    tupleList.Add(new Tuple<int, string>(2, "kiwi"));
 
-    stack.Push(2);
-    stack.Push(5);
-    stack.Push(15);
-    stack.Push(3);
-    stack.Push(3);
-    stack.Push(1);
-    stack.Sort(false);
-    stack.PrintNodesValue();
 
-    stack.Sort();
-    stack.PrintNodesValue();
+
+    QuickSort.Quick_Sort(tupleList, 0, tupleList.Count - 1);
+
+    for (int i = 0; i < tupleList.Count; i++)
+    {
+      Console.WriteLine(tupleList[i].Item1 + "-" + tupleList[i].Item2);
+    }
+
+    // Stack<int> stack = new Stack<int>();
+
+    // stack.Push(2);
+    // stack.Push(5);
+    // stack.Push(15);
+    // stack.Push(3);
+    // stack.Push(3);
+    // stack.Push(1);
+    // stack.Sort(false);
+    // stack.PrintNodesValue();
+
+    // stack.Sort();
+    // stack.PrintNodesValue();
     // stack.Print();
 
 
