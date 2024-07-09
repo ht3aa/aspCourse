@@ -21,20 +21,19 @@ class QuickSort
       if (arr[i].Item1 <= pivot.Item1)
       {
         index++;
-        swap(arr, i, index);
-
+        swap(arr[i], arr[index]);
       }
     }
     index++;
-    swap(arr, index, right);
+    swap(arr[index], arr[right]);
     return index;
   }
 
-  public static void swap(List<Tuple<int, string>> arr, int a, int b)
+  public static void swap(Tuple<int, string> item1, Tuple<int, string> item2)
   {
-    Tuple<int, string> temp = arr[a];
-    arr[a] = arr[b];
-    arr[b] = temp;
+    Tuple<int, string> temp = item1;
+    item1 = item2;
+    item2 = item1;
   }
 
 }
